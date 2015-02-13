@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Revisions lastRevision="279451" isLocked="False">
+  <Revision pRevision="279451" pAuthor="krongkarn.jitsil" pDate="Tuesday, September 11, 2012 5:45:18 PM" xGroup="Sprint K">
+    <Message><![CDATA[GUIDES-3579::Add new make logo into liquidity provider on Reuters Trading for FX Guide]]></Message>
+    <Added>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/images/LiquidityProviders</Added>
+    <Modified>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/HomeGuides.csproj</Modified>
+    <Deleted>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/content.config</Deleted>
+  </Revision>
+  <Revision pRevision="279450" pAuthor="U0160378" pDate="Tuesday, September 11, 2012 5:45:18 PM" xGroup="Sprint K">
+    <Message><![CDATA[GUIDES-3579::Add new make logo into liquidity provider on Reuters Trading for FX Guide]]></Message>
+    <Added>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/images/LiquidityProviders</Added>
+    <Modified>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/HomeGuides.csproj</Modified>
+    <Deleted>/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides/content.config</Deleted>
+  </Revision>
+</Revisions>

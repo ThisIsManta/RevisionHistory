@@ -1,0 +1,69 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="Presentation.Windows.SplashWindow"
+	x:Name="RootWindow" WindowState="Maximized" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" ShowInTaskbar="False" ResizeMode="NoResize" Foreground="White" Topmost="True">
+	<Window.Resources>
+		<Storyboard x:Key="TurnIn">
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ShapeContainer">
+				<EasingThicknessKeyFrame KeyTime="0" Value="300,0,0,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0">
+					<EasingThicknessKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingThicknessKeyFrame.EasingFunction>
+				</EasingThicknessKeyFrame>
+			</ThicknessAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="UpperTriShape">
+				<EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="LowerTriShape">
+				<EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="RootWindow">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource TurnIn}"/>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid x:Name="RootSpace">
+		<Grid x:Name="ShapeContainer" Margin="0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Polygon x:Name="UpperTriShape" Points="400,0 400,100 100,100" Fill="#FF04AEDA" Stretch="Fill" StrokeThickness="0" Height="0"/>
+			<Rectangle x:Name="RectShape" Fill="#FF04AEDA" Grid.Row="1" StrokeThickness="0"/>
+			<Polygon x:Name="LowerTriShape" Points="400,400 400,100 100,100" Fill="#FF04AEDA" Stretch="Fill" StrokeThickness="0" Height="0" Grid.Row="2"/>
+		</Grid>
+		<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<TextBlock x:Name="Header" TextWrapping="Wrap" Text="Revision History" d:LayoutOverrides="Height" Grid.Row="1" FontFamily="Segoe UI Semilight" FontSize="64" TextAlignment="Center"/>
+			<Image Source="Images/Apps-Notepad-Metro-trans.png" Stretch="None"/>
+		</Grid>
+	</Grid>
+</Window>

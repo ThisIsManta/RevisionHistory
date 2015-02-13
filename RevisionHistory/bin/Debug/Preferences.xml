@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Preferences>
+  <LastValues>
+    <HomeAuthorBox></HomeAuthorBox>
+    <HomeRevisionBox></HomeRevisionBox>
+    <HomeDateBox></HomeDateBox>
+    <HomeMessageBox></HomeMessageBox>
+    <HomeGroupBox></HomeGroupBox>
+    <HomeFileBox></HomeFileBox>
+    <WorkingFileLocation>Log.xml</WorkingFileLocation>
+    <ViewMaxRevisionBox>1000</ViewMaxRevisionBox>
+    <ViewAllRevisionBox>False</ViewAllRevisionBox>
+    <ViewSimplePathBox>True</ViewSimplePathBox>
+    <ViewExtendedLogBox>True</ViewExtendedLogBox>
+    <ViewAuthorColorBox>True</ViewAuthorColorBox>
+    <ViewSortByAddedBox>False</ViewSortByAddedBox>
+    <ViewSortByNumberBox>True</ViewSortByNumberBox>
+    <SettingsLockFileBox>False</SettingsLockFileBox>
+    <SelectedGroupBox>I1</SelectedGroupBox>
+    <LogWindow path="https://sami.cdt.int.thomsonreuters.com/svn/ve_viewsexplorer/ViewsExplorer/Guides/branches/Guides/Content/HomeGuides" limit="20" />
+    <UnmergedToggleButton>True</UnmergedToggleButton>
+    <InnerContentSpace>353</InnerContentSpace>
+  </LastValues>
+  <Colorization>
+    <Color name="pamonsak.piyawanitsa" rgb="64,224,208" />
+    <Color name="U0122155" rgb="64,224,208" />
+    <Color name="kittipong.boonyapiso" rgb="255,215,0" />
+    <Color name="sirinun.sintuwatin" rgb="30,144,255" />
+    <Color name="khachornsak.siriwatt" rgb="50,205,50" />
+    <Color name="krongkarn.jitsil" rgb="238,130,238" />
+    <Color name="Sanprapha.Vudhivorn" rgb="" />
+    <Color name="pakawat.a" rgb="192,192,192" />
+    <Color name="sarawoot.p" rgb="" />
+    <Color name="anantachai.saothong" rgb="255,69,0" />
+    <Color name="U0160378" rgb="255,69,0" />
+  </Colorization>
+  <Alias>
+    <pAuthor preferred="Manta">
+      <Match>anantachai.saothong</Match>
+      <Match>U0160378</Match>
+    </pAuthor>
+    <pAuthor preferred="Unn">
+      <Match>pamonsak.piyawanitsa</Match>
+      <Match>U0122155</Match>
+    </pAuthor>
+    <pAuthor preferred="PooPan">
+      <Match>krongkarn.jitsil</Match>
+    </pAuthor>
+  </Alias>
+</Preferences>

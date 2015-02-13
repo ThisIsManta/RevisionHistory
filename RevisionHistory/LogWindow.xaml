@@ -1,0 +1,28 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="LogWindow"
+	Title="Get SVN" VerticalAlignment="Top" WindowStartupLocation="CenterScreen" MinWidth="300" SizeToContent="Height" Width="600" Background="#FFF0F0F0" FontSize="13.333" Height="129.733333333333">
+
+	<Grid x:Name="RootSpace" VerticalAlignment="Top" Margin="10,5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<TextBlock TextWrapping="Wrap" Text="Local Path" d:LayoutOverrides="Width, Height" VerticalAlignment="Center" Margin="0,0,10,0"/>
+		<ComboBox x:Name="PathBox" Grid.Column="1" IsEditable="True" BorderBrush="Gainsboro" Margin="0,5"/>
+		<TextBlock TextWrapping="Wrap" Text="Get Last For" d:LayoutOverrides="Width, Height" Grid.Row="1" Margin="0,0,10,0" VerticalAlignment="Center"/>
+		<TextBox x:Name="LimitBox" TextWrapping="Wrap" Text="200" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="60" TextAlignment="Right" Height="20" VerticalContentAlignment="Center" UndoLimit="10" BorderBrush="Gainsboro"/>
+		<TextBlock TextWrapping="Wrap" Text="Revisions" Grid.Row="1" Margin="70,0,0,0" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Column="1" HorizontalAlignment="Left"/>
+		<StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Height="22" Margin="0,0,0,5">
+			<Button x:Name="BeginButton" Content="Begin" Padding="15,1"/>
+			<Button x:Name="CancelButton" Content="Cancel" Padding="15,1" Margin="10,0,0,0"/>
+		</StackPanel>
+	</Grid>
+</Window>

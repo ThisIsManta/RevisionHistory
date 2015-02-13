@@ -1,0 +1,367 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Name="RootWindow" mc:Ignorable="d" x:Class="MainWindow"
+    Title="Revision History" Height="720" Width="1280" WindowState="Maximized" FontSize="13.333" Icon="Images/Apps-Notepad-Metro.ico">
+	<Window.Resources>
+		<Storyboard x:Key="HoverOnMoreInfo">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="MoreInfoLink">
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="Blue"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="MoreInfoLink">
+			<BeginStoryboard x:Name="HoverOnMoreInfo_BeginStoryboard" Storyboard="{StaticResource HoverOnMoreInfo}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="MoreInfoLink">
+			<RemoveStoryboard BeginStoryboardName="HoverOnMoreInfo_BeginStoryboard"/>
+		</EventTrigger>
+	</Window.Triggers>
+    <Grid x:Name="RootSpace">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="Auto"/>
+    		<RowDefinition Height="Auto"/>
+    		<RowDefinition/>
+    		<RowDefinition Height="Auto"/>
+    	</Grid.RowDefinitions>
+    	<Grid Height="40">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition Width="Auto"/>
+    		</Grid.ColumnDefinitions>
+    		<Rectangle Fill="Gainsboro" StrokeThickness="0" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+    		<StackPanel x:Name="TabContainer" Margin="15,0" Orientation="Horizontal">
+    			<Grid x:Name="HomeMenu" VerticalAlignment="Bottom" HorizontalAlignment="Left" d:LayoutOverrides="HorizontalAlignment">
+    				<Rectangle Stroke="Gainsboro"/>
+    				<TextBlock TextWrapping="Wrap" Text="HOME" d:LayoutOverrides="Width, Height" Margin="1,1,1,0" Padding="15,5" Background="White" Foreground="RoyalBlue"/>
+    			</Grid>
+    			<Grid x:Name="ViewMenu" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+    				<Rectangle Stroke="Gainsboro" Visibility="Hidden" Fill="#00000000"/>
+    				<TextBlock TextWrapping="Wrap" Text="VIEW" d:LayoutOverrides="Width, Height" Margin="1,1,1,0" Padding="15,5" Foreground="DimGray"/>
+    			</Grid>
+    			<Grid x:Name="SettingsMenu" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+    				<Rectangle Stroke="Gainsboro" Visibility="Hidden" Fill="#00000000"/>
+    				<TextBlock TextWrapping="Wrap" Text="SETTINGS" d:LayoutOverrides="Width, Height" Margin="1,1,1,0" Padding="15,5" Foreground="DimGray"/>
+    			</Grid>
+    		</StackPanel>
+    		<Grid HorizontalAlignment="Left" Grid.Column="1" Margin="0,0,15,0">
+    			<TextBlock x:Name="MoreInfoLink" HorizontalAlignment="Left" TextWrapping="Wrap" Text="The Hub" VerticalAlignment="Center" Foreground="#FF04AEDA" TextDecorations="Underline"/>
+    		</Grid>
+    	</Grid>
+    	<Rectangle Fill="#FF04AEDA" StrokeThickness="0" Height="25" VerticalAlignment="Bottom" Grid.Row="1"/>
+    	<Grid x:Name="RibbonContainer" Grid.Row="1" Height="85" VerticalAlignment="Top">
+    		<StackPanel x:Name="HomeButtonContainer" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Horizontal" Height="Auto" Grid.Row="0">
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid x:Name="HomeOpenButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/folder_page_white.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Open" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeAddButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/plus.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Add" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeMergeButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Source="Images/tick_dis.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+    						<TextBlock TextWrapping="Wrap" Text="Merge" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeDeleteButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Source="Images/cross.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+    						<TextBlock TextWrapping="Wrap" Text="Delete" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeCopyButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Source="Images/page_white_copy.png" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+    						<TextBlock TextWrapping="Wrap" Text="Copy" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeGetSVNButton" MinWidth="50" Width="80">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/raw_access_logs.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Update Log" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="REVISION" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel x:Name="HomeFilterContainer" Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<TextBlock TextWrapping="Wrap" Text="Revision" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Width="50" ToolTip="e.g. 278901,281522-281526"/>
+    						<TextBox x:Name="HomeRevisionBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="1" MinHeight="20" MinWidth="120"/>
+    						<TextBlock TextWrapping="Wrap" Text="Date" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" ToolTip="e.g. 12 Sep 2012-13 Sep 2012"/>
+    						<TextBox x:Name="HomeDateBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="3" MinHeight="20" MinWidth="120"/>
+    					</Grid>
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<TextBlock TextWrapping="Wrap" Text="Author" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" ToolTip="e.g. anantachai,pakawat"/>
+    						<ComboBox x:Name="HomeAuthorBox" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="2" Background="White" IsEditable="True" BorderBrush="Gainsboro" Padding="0" MinHeight="20" MinWidth="120"/>
+    						<TextBlock TextWrapping="Wrap" Text="Message" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" Width="52" ToolTip="e.g. GUIDES-3701,Fix"/>
+    						<TextBox x:Name="HomeMessageBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="3" MinHeight="20" MinWidth="120"/>
+    					</Grid>
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<TextBlock TextWrapping="Wrap" Text="Group" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1" Width="37" ToolTip="e.g. Sprint-K,Sprint-L"/>
+    						<TextBox x:Name="HomeGroupBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="1" MinHeight="20" MinWidth="120"/>
+    						<TextBlock TextWrapping="Wrap" Text="File" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" ToolTip="e.g. QuoteListControl.cs,Added:BankLogo.ascx"/>
+    						<TextBox x:Name="HomeFileBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="3" MinHeight="20" MinWidth="120"/>
+    					</Grid>
+    					<Grid x:Name="HomeFilterButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/filter_add.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Apply" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid x:Name="HomeClearButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/filter_delete.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Clear" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="FILTER" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="66">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid x:Name="HomeSelectButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/select.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Merged" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="SELECTION" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    		</StackPanel>
+    		<StackPanel x:Name="ViewButtonContainer" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Horizontal" Height="Auto" Grid.Row="0" Visibility="Hidden">
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="0"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<TextBlock TextWrapping="Wrap" Text="Show Last Merged Revision" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="3" ToolTip="e.g. 278901,281522-281526"/>
+    						<TextBox x:Name="ViewMaxRevisionBox" Grid.Column="2" BorderBrush="Gainsboro" d:LayoutOverrides="Height" Grid.Row="3" Width="60" TextAlignment="Right"/>
+    					</Grid>
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<CheckBox x:Name="ViewExtendedLogBox" Content="Show Extended Log" Grid.Row="1" VerticalAlignment="Center"/>
+    						<CheckBox x:Name="ViewSimplePathBox" Content="Simplify File Path" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
+    					</Grid>
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<CheckBox x:Name="ViewAuthorColorBox" Content="Colorize Revision By Author" Grid.Row="1" VerticalAlignment="Center"/>
+    						<CheckBox Content="Simplify File Path" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="REVISION" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0">
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition/>
+    							<ColumnDefinition/>
+    						</Grid.ColumnDefinitions>
+    						<RadioButton x:Name="ViewSortByAddedBox" Content="Added Order" d:LayoutOverrides="Width, Height" Margin="0,0,5,0" IsChecked="True"/>
+    						<RadioButton x:Name="ViewSortByNumberBox" Content="Revision Number" d:LayoutOverrides="Width, Height" Grid.Row="2" Margin="0,0,5,0"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="SORTING" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    		</StackPanel>
+    		<StackPanel x:Name="SettingsButtonContainer" ScrollViewer.VerticalScrollBarVisibility="Disabled" Orientation="Horizontal" Height="Auto" Grid.Row="0" Visibility="Hidden">
+    			<Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    				<Grid.RowDefinitions>
+    					<RowDefinition/>
+    					<RowDefinition Height="25"/>
+    				</Grid.RowDefinitions>
+    				<StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+    					<Grid x:Name="SettingsEditXmlButton" MinWidth="50">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<Image Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" Source="Images/document_prepare.png"/>
+    						<TextBlock TextWrapping="Wrap" Text="Edit XML" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" HorizontalAlignment="Center" Margin="5,0"/>
+    					</Grid>
+    					<Grid Margin="5,0">
+    						<Grid.ColumnDefinitions>
+    							<ColumnDefinition Width="Auto"/>
+    							<ColumnDefinition Width="5"/>
+    							<ColumnDefinition Width="Auto"/>
+    						</Grid.ColumnDefinitions>
+    						<Grid.RowDefinitions>
+    							<RowDefinition/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="5"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition/>
+    						</Grid.RowDefinitions>
+    						<CheckBox x:Name="SettingsLockFileBox" Content="Lock Opening File" Grid.Row="1" VerticalAlignment="Center"/>
+    						<CheckBox Content="Simplify File Path" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden"/>
+    					</Grid>
+    				</StackPanel>
+    				<TextBlock TextWrapping="Wrap" Text="PREFERENCES" VerticalAlignment="Center" d:LayoutOverrides="Width" Grid.Row="1" Foreground="White" TextAlignment="Center"/>
+    				<Rectangle Fill="Gainsboro" HorizontalAlignment="Right" StrokeThickness="0" Width="1" Margin="0,1"/>
+    			</Grid>
+    		</StackPanel>
+    	</Grid>
+    	<Grid x:Name="ContentSpace" Grid.Row="2">
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition Width="320" MaxWidth="580" MinWidth="80"/>
+    			<ColumnDefinition Width="Auto"/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<Grid x:Name="InnerContentSpace" Grid.Row="1">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition/>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition/>
+    			</Grid.RowDefinitions>
+    			<TextBlock x:Name="UnmergedRevisionText" TextWrapping="Wrap" Text="Unmerged" Padding="5,2" MinHeight="22" VerticalAlignment="Top"/>
+    			<ScrollViewer x:Name="UnmergedRevisionSpace" Background="#FFF0F0F0" Grid.Row="1">
+    				<WrapPanel x:Name="UnmergedRevisionContainer" Margin="1"/>
+    			</ScrollViewer>
+    			<TextBlock TextWrapping="Wrap" Text="Merged" Padding="5,2" MinHeight="22" VerticalAlignment="Bottom" Grid.Row="3"/>
+    			<ScrollViewer x:Name="MergedRevisionSpace" Background="#FFF0F0F0" Grid.Row="4">
+    				<WrapPanel x:Name="MergedRevisionContainer" Margin="1"/>
+    			</ScrollViewer>
+    			<Image x:Name="UnmergedToggleButton" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Source="Images/eye.png" Margin="0,0,2,0"/>
+    			<Image x:Name="MergedToggleButton" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="None" Source="Images/eye.png" Grid.Row="3" Margin="0,0,2,0"/>
+    			<Rectangle Fill="Gainsboro" Height="3" Grid.Row="2" VerticalAlignment="Top"/>
+    			<Image x:Name="UnmergedLockIcon" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Source="Images/lock.png" Stretch="None" Visibility="Hidden"/>
+    		</Grid>
+    		<GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="3" Background="Gainsboro"/>
+    		<RichTextBox x:Name="RevisionBox" VerticalScrollBarVisibility="Visible" Padding="10,5" IsReadOnly="True" IsUndoEnabled="False" BorderThickness="0" BorderBrush="{x:Null}" d:LayoutOverrides="Width, Height" Grid.Column="2" IsDocumentEnabled="True"/>
+    	</Grid>
+    	<Grid Grid.Row="3" Height="25" Background="#FF04AEDA">
+    		<TextBlock x:Name="StatusText" TextWrapping="Wrap" Text="READY" d:LayoutOverrides="Height" VerticalAlignment="Center" Margin="10,0" Foreground="White"/>
+    	</Grid>
+        
+    </Grid>
+</Window>
