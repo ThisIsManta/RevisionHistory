@@ -15,7 +15,7 @@ Imports System.Windows
 <Assembly: AssemblyDescription("Add, update, find and view revision log for sub-version control system.")> 
 <Assembly: AssemblyCompany("Thomson Reuters")> 
 <Assembly: AssemblyProduct("Revision History")> 
-<Assembly: AssemblyCopyright("Copyright 2012-2013 Anantachai Saothong (Manta)")> 
+<Assembly: AssemblyCopyright("Anantachai Saothong")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
